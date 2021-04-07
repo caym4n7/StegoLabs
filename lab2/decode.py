@@ -1,4 +1,4 @@
-f = open("encoded_message.txt", "r")
+f = open("encoded_message.txt", "r", encoding='utf-8')
 encoded_message = f.read()
 f.close()	
 
@@ -19,9 +19,19 @@ for char in encoded_message:
 	elif char in ukrLet:
 		code += "0"
 
-#decoded_message = ''.join(codes)
-#print(decoded_message)
+decoded_message = ''.join(codes)
 
-print(codes)
+def BinaryToDecimal(binary):  
+	string = int(binary, 2)
+	return string
 
-
+print("Decoded message binary:", decoded_message)
+   
+str_data =' '
+   
+for i in range(0, len(decoded_message), 8):
+    temp_data = decoded_message[i:i + 8]
+    decimal_data = BinaryToDecimal(temp_data)
+    str_data = str_data + chr(decimal_data) 
+  
+print("Decoded message:", str_data)
